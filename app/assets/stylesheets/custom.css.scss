@@ -1,0 +1,40 @@
+/* Imports for bootstrap*/
+
+@import "bootstrap-sprockets";
+@import "bootstrap";
+
+.jumbotron {
+    background-image: asset-url('Trophy_2048x1152.jpg');
+    background-size: cover;
+}
+#w_text {
+    color: #fff;
+    
+}
+
+.footer {
+    margin-top: 45px;
+    padding-top: 5px;
+    border-top: 1px solid #eaeaea;
+    color: #777;
+}
+
+.footer nav {
+    float: right;
+}
+
+.article-actions {
+    border-top: 1px solid #eaeaea;
+    padding-top: 1%;
+}
+
+.article-title {
+    text-align: center;
+    
+}
+
+.article-body {
+    margin-top: 1%;
+    margin-bottom: 1%;
+    
+}

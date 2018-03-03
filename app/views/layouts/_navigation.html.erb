@@ -1,0 +1,19 @@
+<div class="container-fluid">
+  <div class="jumbotron">
+    <h2 id="w_text">Encontre o melhor coach para seu estilo de jogo</h2> 
+    <%= link_to "Cadastre-se ja", "#", class: "btn btn-primary btn-large" %>
+  </div>
+  <nav class="navbar navbar-default">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <%= link_to "E-coach", root_path, class: "navbar-brand" %>
+      </div>
+      <ul class="nav navbar-nav">
+        <li><%= link_to "Artigos", articles_path %></li>
+        <li><%= link_to "Novo Artigo", new_article_path %></li>
+        <li><a href="#"><span class="glyphicon glyphicon-star" aria-hidden="true"></span> Star</a></li>
+        <li><a href="#">Page 3</a></li>
+      </ul>
+    </div>
+  </nav> 
+</div>
