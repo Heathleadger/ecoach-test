@@ -34,7 +34,12 @@
 }
 
 .article-body {
+    border-top: 1px solid #eaeaea;
+    padding-top: 1%;
     margin-top: 1%;
     margin-bottom: 1%;
     
+}
+.article-user {
+    float: right;
 }
