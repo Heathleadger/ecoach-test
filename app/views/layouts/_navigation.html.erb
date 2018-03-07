@@ -10,11 +10,20 @@
       </div>
       <ul class="nav navbar-nav">
         <li><%= link_to "Articles", articles_path %></li>
-        <li><%= link_to "New Article", new_article_path %></li>
         <li><%= link_to "Users", users_path %></li>
+        <% if logged_in? %>
+          <li><%= link_to "New Article", new_article_path %></li>
+        <% end %>
         <li class="disabled"><a href="#">Page 3</a></li>
       </ul>
-      <p class="navbar-text navbar-right">Signed in as <a href="#" class="navbar-link">Vinicius Souza</a></p>
+      <ul class="nav navbar-nav navbar-right">
+        <% if logged_in? %>
+          <li><%= link_to "Profile", user_path(current_user) %></li>
+          <li><%= link_to "Logout", logout_path, method: :delete %></li>
+        <% else %>
+          <li><%= link_to "Login", login_path %></li>
+        <% end %>
+      </ul>
     </div>
   </nav> 
 </div>
