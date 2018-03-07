@@ -1,0 +1,19 @@
+<h1 align="center">Lista de usuarios</h1>
+<div align="center">
+    <%= will_paginate %>
+</div>
+<div class="row">
+    <div class="col-sm-4 col-sm-offset-4">
+        <div class="list-group">
+            <% @users.each do |user| %>
+            <div class="list-group-item">
+                <%= link_to gravatar_for(user), user_path(user)%>
+                <%= link_to user.username, user_path(user) %>
+            </div>
+            <% end %>  
+        </div>
+    </div>
+</div>
+<div align="center">
+    <%= will_paginate %>
+</div>

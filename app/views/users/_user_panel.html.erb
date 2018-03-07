@@ -1,0 +1,11 @@
+<div class="panel panel-default">
+    <div align="center" class="panel-heading">
+         <h1 class="panel-title">Hello,   <%= gravatar_for @user %> <%= @user.username %></h1>
+     </div>
+    <div class="panel-body">
+        <div class="list-group">
+            <%= link_to "Articles", user_path(@user), class: "list-group-item btn" %>
+            <%= link_to "Editar Usuario", edit_user_path(@user), class: "list-group-item btn" %>
+        </div>
+    </div>
+</div> 

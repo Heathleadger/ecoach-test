@@ -1,0 +1,22 @@
+<div class="col-sm-12">
+    <div class="col-sm-2">
+        <%= render "user_panel" %>    
+    </div>
+    <div class="col-sm-10">
+        <div class="col-sm-6 list-group">
+            <div class="list-group-item btn">
+                    Articles <%= content_tag :span, @user.articles.count, class: 'badge' %>
+            </div>
+            <% @user_articles.each do |article| %>
+                <div class="list-group-item btn">
+                    <h2 class= "list-group-item-heading"><%= link_to article.title, article_path(article)%></h2>
+                    <p class= "list-group-item-text"><%= article.description %></p>
+                </div>
+            <% end %>
+            <div align="center">
+                <%= will_paginate @user_articles %>
+            </div>
+        </div>
+    </div>
+    
+</div>
