@@ -2,6 +2,7 @@ class UsersController < ApplicationController
   
   before_action :set_user, only: [:edit, :update, :show]
   before_action :require_same_user, only: [:edit, :update]
+  before_action :require_admin, only: [:destroy]
   
   def index
    @users = User.paginate(page: params[:page], per_page: 5)
@@ -15,8 +16,9 @@ class UsersController < ApplicationController
   def create
     @user = User.new(user_params)
     if @user.save
-        flash[:success] = "Welcome to E-Coach Mr.(s) #{@user.username}"
-        redirect_to articles_path
+      session[:user_id] = @user.id
+      flash[:success] = "Welcome to E-Coach Mr.(s) #{@user.username}"
+      redirect_to user_path(@user)
     else
       render 'new'
     end
@@ -42,6 +44,13 @@ class UsersController < ApplicationController
     end
     @user_articles = @user.articles.paginate(page: params[:page], per_page: 5)
   end
+  
+  def destroy
+    @user = User.find(params[:id])
+    @user.destroy
+    flash[:danger] = "The user and all its articles has been deleted"
+    redirect_to users_path
+  end
 
   private
   
@@ -54,9 +63,16 @@ class UsersController < ApplicationController
   end
   
   def require_same_user
-   if !logged_in? || current_user != @user
+   if !logged_in? || current_user != @user || !current_user.admin? 
      flash[:danger] = "You are not the user of this account"
      redirect_to articles_path
    end
+  end
+  
+  def require_admin
+    if logged_in? && !current_user.admin?
+      flash[:danger] = "You have to be an admin in order to perform this action"
+      redirect_to root_path
+    end
   end
 end

@@ -60,7 +60,7 @@ class ArticlesController < ApplicationController
     end
     
     def require_same_user
-      if current_user != @article.user
+      if current_user != @article.user and !current_user.admin?
         flash[:danger] = "You are not the user who created this article"
         redirect_to articles_path
       end
