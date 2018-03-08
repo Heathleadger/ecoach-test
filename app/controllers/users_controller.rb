@@ -38,7 +38,7 @@ class UsersController < ApplicationController
   end
 
   def show
-    if !logged_in? || current_user != @user
+    if (!logged_in? || current_user != @user) and !current_user.admin?
       flash[:danger] = "You are not logged in with this user"
       redirect_to articles_path
     end
@@ -63,7 +63,7 @@ class UsersController < ApplicationController
   end
   
   def require_same_user
-   if !logged_in? || current_user != @user || !current_user.admin? 
+   if (!logged_in? || current_user != @user) and !current_user.admin? 
      flash[:danger] = "You are not the user of this account"
      redirect_to articles_path
    end
