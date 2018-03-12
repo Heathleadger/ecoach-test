@@ -9,8 +9,13 @@
             </div>
             <% @user_articles.each do |article| %>
                 <div class="list-group-item btn">
-                    <h2 class= "list-group-item-heading"><%= link_to article.title, article_path(article)%></h2>
+                    <h3 class= "list-group-item-heading"><%= link_to article.title, article_path(article)%></h3>
                     <p class= "list-group-item-text"><%= article.description %></p>
+                    <p>
+                        <% if article.categories.any? %>
+                            <%= render article.categories %>
+                        <% end %>
+                    </p>
                 </div>
             <% end %>
             <div align="center">
